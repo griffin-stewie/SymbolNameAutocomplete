@@ -1,0 +1,38 @@
+{
+    "name": "Symbol Name Autocomplete",
+    "description": "This plugin gives you autocompletion of symbol names when creating a symbol.",
+    "author": "griffin-stewie",
+    "homepage": "https://griffin-stewie.github.io/",
+    "version": "0.5.0",
+    "identifier": "net.cyan-stivy.sketchPlugin.symbol-name-autocomplete",
+    "icon": "icon.png",
+    "appcast": "https://github.com/griffin-stewie/SymbolNameAutocomplete/blob/master/.appcast.xml",
+    "compatibleVersion": 3,
+    "bundleVersion": 1,
+    "commands": [
+        {
+            "name": "Handle Actions",
+            "identifier": "handle-actions",
+            "script": "index.js",
+            "handlers": {
+                "actions": {
+                    "Startup": "onStartup",
+                    "Shutdown": "onShutdown",
+                    "CreateSymbol.finish": "onCreateSymbolDidAppearHandler"
+                }
+            }
+        },
+        {
+            "name": "About Symbol Name Autocomplete",
+            "identifier": "about",
+            "script": "index.js",
+            "handler": "onSelectAboutMenuItem",
+            "description": "Learn more about the Symbol Name Autocomplete plugin."
+        }
+    ],
+    "menu": {
+        "items": [
+            "about"
+        ]
+    }
+}

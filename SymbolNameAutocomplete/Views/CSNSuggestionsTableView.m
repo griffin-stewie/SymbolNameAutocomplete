@@ -3,7 +3,7 @@
 //  SymbolNameAutocomplete
 //
 //  Created by griffin-stewie on 2018/11/23.
-//  Copyright © 2018 cyan-stivy.com. All rights reserved.
+//  Copyright © 2018 cyan-stivy.net. All rights reserved.
 //
 
 #import "CSNSuggestionsTableView.h"

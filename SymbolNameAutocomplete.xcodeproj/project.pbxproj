@@ -258,6 +258,7 @@
 				D0FF4A8C21A69229000FA0DC /* Sources */,
 				D0FF4A8D21A69229000FA0DC /* Frameworks */,
 				D0FF4A8E21A69229000FA0DC /* Resources */,
+				E3695D78222A14E200FBA74E /* Install Plugin */,
 			);
 			buildRules = (
 			);
@@ -338,6 +339,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E3695D78222A14E200FBA74E /* Install Plugin */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Install Plugin";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sh Build-Phases/install_using_xcode.sh \n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0FF4A8C21A69229000FA0DC /* Sources */ = {

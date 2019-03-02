@@ -12,7 +12,7 @@ platform :mac do
       build: true,
       scheme: "SymbolNameAutocomplete",
       configuration: "Debug",
-      xcargs: "CONFIGURATION_BUILD_DIR=#{BUILD_DIR}"
+      xcargs: "CONFIGURATION_BUILD_DIR=#{BUILD_DIR} BUILD_FROM_FASTLANE=true"
     )
 
     File.expand_path(File.join("..", BUILD_DIR))
@@ -26,7 +26,7 @@ platform :mac do
       build: true,
       scheme: "SymbolNameAutocomplete",
       configuration: "Release",
-      xcargs: "CONFIGURATION_BUILD_DIR=#{BUILD_DIR}"
+      xcargs: "CONFIGURATION_BUILD_DIR=#{BUILD_DIR} BUILD_FROM_FASTLANE=true "
     )
 
     File.expand_path(File.join("..", BUILD_DIR))
@@ -40,6 +40,8 @@ platform :mac do
     unless build_dir
       build_dir = build
     end
+
+    puts "⚡️"
 
     plugin_dir = File.join(build_dir, PLUGIN_NAME)
     FileUtils.rm_rf(plugin_dir)

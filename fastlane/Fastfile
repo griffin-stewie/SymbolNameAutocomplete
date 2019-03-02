@@ -34,7 +34,7 @@ platform :mac do
 
   desc "Package plugin, building framework unless provided"
   lane :package do |options|
-    require "fileutils"
+    fastlane_require "fileutils"
 
     build_dir = options[:build_dir]
     unless build_dir
@@ -73,7 +73,7 @@ platform :mac do
 
   desc "Package and install plugin to Sketch"
   lane :install do |options|
-    require "fileutils"
+    fastlane_require "fileutils"
 
     plugin_dir = package(options)
     plugin_link = File.join(Dir.home, "Library", "Application Support", "com.bohemiancoding.sketch3", "Plugins", PLUGIN_NAME)

@@ -12,7 +12,7 @@ platform :mac do
       build: true,
       scheme: "SymbolNameAutocomplete",
       configuration: "Debug",
-      xcargs: "CONFIGURATION_BUILD_DIR=#{BUILD_DIR}"
+      xcargs: "CONFIGURATION_BUILD_DIR=#{BUILD_DIR} BUILD_FROM_FASTLANE=true"
     )
 
     File.expand_path(File.join("..", BUILD_DIR))
@@ -26,7 +26,7 @@ platform :mac do
       build: true,
       scheme: "SymbolNameAutocomplete",
       configuration: "Release",
-      xcargs: "CONFIGURATION_BUILD_DIR=#{BUILD_DIR}"
+      xcargs: "CONFIGURATION_BUILD_DIR=#{BUILD_DIR} BUILD_FROM_FASTLANE=true "
     )
 
     File.expand_path(File.join("..", BUILD_DIR))
@@ -34,12 +34,14 @@ platform :mac do
 
   desc "Package plugin, building framework unless provided"
   lane :package do |options|
-    require "fileutils"
+    fastlane_require "fileutils"
 
     build_dir = options[:build_dir]
     unless build_dir
       build_dir = build
     end
+
+    puts "⚡️"
 
     plugin_dir = File.join(build_dir, PLUGIN_NAME)
     FileUtils.rm_rf(plugin_dir)
@@ -73,7 +75,7 @@ platform :mac do
 
   desc "Package and install plugin to Sketch"
   lane :install do |options|
-    require "fileutils"
+    fastlane_require "fileutils"
 
     plugin_dir = package(options)
     plugin_link = File.join(Dir.home, "Library", "Application Support", "com.bohemiancoding.sketch3", "Plugins", PLUGIN_NAME)

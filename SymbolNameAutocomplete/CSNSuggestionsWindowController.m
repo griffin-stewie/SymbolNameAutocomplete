@@ -114,8 +114,6 @@ static const NSSize CSNSuggestionWindowControllerMaximumWindowSize = {.width = 1
                                                      name:NSWindowDidResignKeyNotification
                                                    object:positioningTextView.window];
     }
-
-    [self selectRowAtIndex:0];
 }
 
 - (void)cancelSuggestions

@@ -3,10 +3,10 @@
     "description": "This plugin gives you autocompletion of symbol names when creating a symbol.",
     "author": "griffin-stewie",
     "homepage": "https://griffin-stewie.github.io/",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "identifier": "net.cyan-stivy.sketchPlugin.symbol-name-autocomplete",
     "icon": "icon.png",
-    "appcast": "https://github.com/griffin-stewie/SymbolNameAutocomplete/blob/master/.appcast.xml",
+    "appcast": "https://raw.githubusercontent.com/griffin-stewie/SymbolNameAutocomplete/master/.appcast.xml",
     "compatibleVersion": 3,
     "bundleVersion": 1,
     "commands": [

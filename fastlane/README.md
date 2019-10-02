@@ -36,6 +36,11 @@ Package plugin, building framework unless provided
 fastlane mac install
 ```
 Package and install plugin to Sketch
+### mac publish
+```
+fastlane mac publish
+```
+Publish and Package
 
 ----
 

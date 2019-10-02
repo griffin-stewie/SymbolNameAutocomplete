@@ -83,4 +83,31 @@ platform :mac do
     FileUtils.rm_f(plugin_link)
     FileUtils.ln_s(plugin_dir, plugin_link)
   end
+
+  desc "Publish and Package"
+  lane :publish do |options|
+    fastlane_require "fileutils"
+    fastlane_require "json"
+
+    plugin_dir = package(options)
+    plugin_compressed_path = "#{plugin_dir}.zip"
+    FileUtils.cp_r(plugin_dir, "..", {:remove_destination => true})
+
+    version = ""
+    File.open("../plugin/manifest.json") do |j|
+      hash = JSON.load(j)
+      version = hash["version"]
+    end
+
+    if version.empty? then
+      UI.error 'version is empty'
+      next # skip doing the rest of this lane
+    end
+
+    puts "Current version in manifest.json is #{version}"
+
+    sh("cd .. && skpm publish #{version} && cd -")
+
+    FileUtils.rm_rf(File.join("..", PLUGIN_NAME))
+  end
 end

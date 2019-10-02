@@ -1,3 +1,5 @@
 /fastlane/report.xml
 vendor/bundle
 vendor/bin
+/.skpmrc
+SymbolNameAutocomplete.sketchplugin

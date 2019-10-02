@@ -4,4 +4,4 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-gem "fastlane", "2.118.1"
+gem "fastlane", "2.132.0"

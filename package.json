@@ -1,0 +1,10 @@
+{
+  "skpm": {
+    "name": "Symbol Name Autocomplete",
+    "manifest": "plugin/manifest.json",
+    "main": "SymbolNameAutocomplete.sketchplugin",
+    "repository": "https://github.com/griffin-stewie/SymbolNameAutocomplete",
+    "description": "This Sketch plugin gives you autocompletion of symbol names when creating a symbol"
+  },
+  "version": "0.1.4"
+}

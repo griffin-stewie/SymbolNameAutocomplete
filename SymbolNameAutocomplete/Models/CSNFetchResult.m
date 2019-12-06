@@ -30,6 +30,15 @@
     return self;
 }
 
+- (NSString *)debugDescription
+{
+    return [NSString stringWithFormat:@"<%@: %p, items: %@>",
+            NSStringFromClass([self class]),
+            self,
+            self.items
+            ];
+}
+
 - (BOOL)isTokenEndWithDelimeterAtBottomLevel
 {
     return [self.tokenizer isEndWithDelimeterAtBottomLevel];

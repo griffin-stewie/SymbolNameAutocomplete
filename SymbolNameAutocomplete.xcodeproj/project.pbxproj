@@ -357,7 +357,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "sh Build-Phases/install_using_xcode.sh \n";
+			shellScript = "sh Scripts/Build-Phases/install_using_xcode.sh \n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

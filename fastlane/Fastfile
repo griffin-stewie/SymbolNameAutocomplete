@@ -106,8 +106,107 @@ platform :mac do
 
     puts "Current version in manifest.json is #{version}"
 
-    sh("cd .. && skpm publish #{version} && cd -")
+    UI.success("Ready to publish. Run command bellow:\nskpm publish #{version}")
+  end
 
-    FileUtils.rm_rf(File.join("..", PLUGIN_NAME))
+  desc "Notarize"
+  lane :notarize_plugin do |options|
+    fastlane_require "fileutils"
+    fastlane_require "json"
+    fastlane_require "yaml"
+    fastlane_require "zip"
+    fastlane_require "plist"
+    fastlane_require "pp"
+
+    skpmrc = YAML.load_file("../.skpmrc")
+    notarization = skpmrc["notarization"]
+
+    username = notarization["username"]
+    password =  notarization["password"]
+
+    zipfile = "../#{options[:zip]}"
+
+    bundleID = ""
+    Zip::File.open(zipfile) do |zip_file|
+      # Handle entries one by one
+      zip_file.each do |entry|
+        if entry.name.end_with?("Info.plist") then
+          # Read into memory
+          entry.get_input_stream do |a|
+            result = Plist.parse_xml(a)
+            bundleID = result["CFBundleIdentifier"]
+          end
+        end
+      end
+    end
+
+    if bundleID.empty? then
+      UI.error 'bundleID is empty'
+      next # skip doing the rest of this lane
+    end
+
+    notarization_upload_response = `
+      xcrun altool --notarize-app -f #{zipfile} --primary-bundle-id \"#{bundleID}\" -u \"#{username}\" -p \"#{password}\" --output-format xml
+    `
+    # pp notarization_info_response
+    notarization_upload_plist = Plist.parse_xml(notarization_upload_response)
+
+    if $? != 0 then
+      if notarization_upload_plist.nil? then
+          UI.user_error! "Something went wrong"
+        next
+      end
+
+      errors = notarization_upload_plist["product-errors"]
+      unless errors.nil? || errors.empty? then
+        errors.each do |e|
+          UI.error e["message"]
+        end
+        UI.user_error! "Error"
+        next
+      end
+    end
+
+    UI.message notarization_upload_plist
+
+    notarization_request_id = notarization_upload_plist['notarization-upload']['RequestUUID']
+
+    UI.success("Successfully uploaded package to notarization service with request identifier #{notarization_request_id}")
+
+    notarization_info = {}
+    while notarization_info.empty? || (notarization_info['Status'] == 'in progress')
+      if notarization_info.empty?
+        UI.message('Waiting to query request status')
+      end
+
+      sleep(30)
+
+      UI.message('Querying request status')
+
+      notarization_info_response = Actions.sh(
+        "xcrun altool --notarization-info #{notarization_request_id} -u #{username} -p #{password} --output-format xml",
+        log: false
+      )
+
+      notarization_info_plist = Plist.parse_xml(notarization_info_response)
+      notarization_info = notarization_info_plist['notarization-info']
+    end
+
+    log_url = notarization_info['LogFileURL']
+    log_suffix = ''
+    if log_url
+      log_response = Net::HTTP.get(URI(log_url))
+      log_json_object = JSON.parse(log_response)
+      log_suffix = ", with log:\n#{JSON.pretty_generate(log_json_object)}"
+    end
+
+    case notarization_info['Status']
+    when 'success'
+      UI.success("Successfully notarized#{log_suffix}")
+    when 'invalid'
+      UI.user_error!("Could not notarize package with message '#{notarization_info['Status Message']}'#{log_suffix}")
+    else
+      UI.crash!("Could not notarize package with status '#{notarization_info['Status']}'#{log_suffix}")
+    end
   end
 end

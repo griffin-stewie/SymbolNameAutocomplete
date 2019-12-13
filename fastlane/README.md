@@ -41,6 +41,11 @@ Package and install plugin to Sketch
 fastlane mac publish
 ```
 Publish and Package
+### mac notarize_plugin
+```
+fastlane mac notarize_plugin
+```
+Notarize
 
 ----
 

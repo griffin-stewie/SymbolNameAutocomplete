@@ -125,7 +125,7 @@
 + (NSArray<NSString *> *)tokenize: (NSString *)string
 {
     NSMutableArray<NSString *> *tokens = [NSMutableArray array];
-    NSMutableCharacterSet *characterSet = [NSMutableCharacterSet letterCharacterSet];
+    NSMutableCharacterSet *characterSet = [NSMutableCharacterSet alphanumericCharacterSet];
     [characterSet removeCharactersInString:@"/"];
     NSScanner *scanner = [NSScanner scannerWithString:string];
     NSString *name = nil;

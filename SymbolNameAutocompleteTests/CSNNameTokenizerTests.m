@@ -91,5 +91,29 @@
     }
 }
 
+- (void)testSymbolNameSeparatedWithSpaceAndContainsNumber
+{
+    {
+        CSNNameTokenizer *tokenizer = [[CSNNameTokenizer alloc] initWithString:@"ListItem / 1"];
+        XCTAssertEqual(tokenizer.count, 2);
+        XCTAssertFalse([tokenizer isEndWithDelimeterAtBottomLevel]);
+        NSString *firstToken = [tokenizer tokenAtLevel: 0];
+        XCTAssertEqualObjects(firstToken, @"ListItem / ");
+        NSString *secondToken = [tokenizer tokenAtLevel: 1];
+        XCTAssertEqualObjects(secondToken, @"1");
+    }
 
+    {
+        CSNNameTokenizer *tokenizer = [[CSNNameTokenizer alloc] initWithString:@"ListItem / 1 / 2"];
+        XCTAssertEqual(tokenizer.count, 3);
+        XCTAssertFalse([tokenizer isEndWithDelimeterAtBottomLevel]);
+        NSString *firstToken = [tokenizer tokenAtLevel: 0];
+        XCTAssertEqualObjects(firstToken, @"ListItem / ");
+        NSString *secondToken = [tokenizer tokenAtLevel: 1];
+        XCTAssertEqualObjects(secondToken, @"1 / ");
+        NSString *thirdToken = [tokenizer tokenAtLevel: 2];
+        XCTAssertEqualObjects(thirdToken, @"2");
+    }
+
+}
 @end

@@ -133,7 +133,7 @@ platform :mac do
     username = notarization["username"]
     password =  notarization["password"]
 
-    zipfile = "../#{options[:zip]}"
+    zipfile = File.expand_path(options[:zip], "..")
 
     bundleID = ""
     Zip::File.open(zipfile) do |zip_file|

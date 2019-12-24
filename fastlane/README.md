@@ -36,6 +36,11 @@ Package plugin, building framework unless provided
 fastlane mac install
 ```
 Package and install plugin to Sketch
+### mac zipped_package
+```
+fastlane mac zipped_package
+```
+Package plugin, and zip it
 ### mac publish
 ```
 fastlane mac publish

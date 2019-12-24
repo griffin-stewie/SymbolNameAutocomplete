@@ -529,7 +529,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = P35U7ALH46;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -543,7 +543,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.4;
+				MARKETING_VERSION = 0.5.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.cyan-stivy.sketchPlugin.symbol-name-autocomplete";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -560,7 +560,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = P35U7ALH46;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -574,7 +574,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.5.4;
+				MARKETING_VERSION = 0.5.5;
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.cyan-stivy.sketchPlugin.symbol-name-autocomplete";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

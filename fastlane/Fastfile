@@ -46,9 +46,6 @@ platform :mac do
     plugin_dir = File.join(build_dir, PLUGIN_NAME)
     FileUtils.rm_rf(plugin_dir)
 
-    plugin_compressed_path = "#{plugin_dir}.zip"
-    FileUtils.rm_f(plugin_compressed_path)
-
     FileUtils.mkdir_p(plugin_dir)
 
     contents_dir = File.join(plugin_dir, "Contents")
@@ -99,7 +96,6 @@ platform :mac do
     fastlane_require "json"
 
     plugin_dir = package(options)
-    plugin_compressed_path = "#{plugin_dir}.zip"
     FileUtils.cp_r(plugin_dir, "..", {:remove_destination => true})
 
     version = ""

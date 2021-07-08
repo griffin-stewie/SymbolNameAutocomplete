@@ -48,7 +48,6 @@ platform :mac do
 
     plugin_dir = File.join(build_dir, PLUGIN_NAME)
     puts plugin_dir
-    FileUtils.rm_rf(plugin_dir)
 
     FileUtils.mkdir_p(plugin_dir)
 
@@ -69,7 +68,10 @@ platform :mac do
     FileUtils.cp("../plugin/manifest.json", sketch_dir)
     FileUtils.cp("../plugin/src/index.js", sketch_dir)
 
-    plugin_dir
+    dir = File.expand_path(File.join("..", PLUGIN_NAME))
+    FileUtils.remove_entry_secure(dir)
+    FileUtils.cp_r(plugin_dir, "..")
+    dir 
   end
 
   desc "Package and install plugin to Sketch"

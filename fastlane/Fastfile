@@ -66,12 +66,15 @@ platform :mac do
     FileUtils.mkdir_p(sketch_dir)
 
     FileUtils.cp("../plugin/manifest.json", sketch_dir)
-    FileUtils.cp("../plugin/src/index.js", sketch_dir)
 
     dir = File.expand_path(File.join("..", PLUGIN_NAME))
-    FileUtils.remove_entry_secure(dir)
+
+    if Dir.exist?(dir)
+      FileUtils.remove_entry_secure(dir)
+    end
+
     FileUtils.cp_r(plugin_dir, "..")
-    dir 
+    dir
   end
 
   desc "Package and install plugin to Sketch"

@@ -1,4 +1,11 @@
 {
+  "name": "Symbol Name Autocomplete",
+  "description": "This plugin gives you autocompletion of symbol names when creating a symbol.",
+  "version": "0.6.1",
+  "author": "griffin-stewie",
+  "engines": {
+    "sketch": ">=49.0"
+  },
   "skpm": {
     "name": "Symbol Name Autocomplete",
     "manifest": "plugin/manifest.json",
@@ -6,5 +13,11 @@
     "repository": "https://github.com/griffin-stewie/SymbolNameAutocomplete",
     "description": "This Sketch plugin gives you autocompletion of symbol names when creating a symbol"
   },
-  "version": "0.6.1"
+  "devDependencies": {
+    "@skpm/builder": "^0.7.0"
+  },
+  "scripts": {
+    "fastlane": "bundle exec fastlane mac package",
+    "build": "npm run fastlane && skpm-build"
+  }
 }

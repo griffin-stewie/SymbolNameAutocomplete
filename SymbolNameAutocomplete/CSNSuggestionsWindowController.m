@@ -134,7 +134,7 @@ static const NSSize CSNSuggestionWindowControllerMaximumWindowSize = {.width = 1
         return NO;
     }
 
-    CGFloat windowHeight = MIN(self.suggestions.count * CSNSuggestionCell.height, CSNSuggestionWindowControllerMaximumWindowSize.height);
+    CGFloat windowHeight = MIN(self.suggestions.count * CSNSuggestionCell.height + 20, CSNSuggestionWindowControllerMaximumWindowSize.height);
 
     NSRect positioningTextViewRect = positioningTextView.frame;
     NSRect rect = [positioningTextView.window convertRectToScreen:positioningTextViewRect];

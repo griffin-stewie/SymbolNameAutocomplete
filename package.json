@@ -17,6 +17,7 @@
     "@skpm/builder": "^0.7.0"
   },
   "scripts": {
+    "postinstall": "npm run build && skpm-link",
     "fastlane": "bundle exec fastlane mac package",
     "build": "npm run fastlane && skpm-build"
   }

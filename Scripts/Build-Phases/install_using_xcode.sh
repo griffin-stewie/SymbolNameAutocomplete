@@ -15,4 +15,7 @@ export LANG=en_US.UTF-8
 BUNDLER_PATH=~/.rbenv/shims/bundler
 
 ## run fastlane "install" lane
+echo "あああ"
+echo $CONFIGURATION_BUILD_DIR
+
 $BUNDLER_PATH exec fastlane mac install build_dir:$CONFIGURATION_BUILD_DIR

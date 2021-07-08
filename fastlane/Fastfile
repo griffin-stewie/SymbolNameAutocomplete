@@ -37,13 +37,17 @@ platform :mac do
     fastlane_require "fileutils"
 
     build_dir = options[:build_dir]
+    puts "opt build_dir #{build_dir}"
     unless build_dir
       build_dir = build
     end
 
+    puts "build_dir => #{build_dir}"
+
     puts "⚡️"
 
     plugin_dir = File.join(build_dir, PLUGIN_NAME)
+    puts plugin_dir
     FileUtils.rm_rf(plugin_dir)
 
     FileUtils.mkdir_p(plugin_dir)

@@ -3,7 +3,7 @@ var REPOSITORY_URL_STRING = "https://github.com/griffin-stewie/SymbolNameAutocom
 /**
  * Handles startup action.
  */
-function onStartup(context) {
+export function onStartup(context) {
     if (!isFrameworkLoaded()) {
         var contentsPath = context.scriptPath.stringByDeletingLastPathComponent().stringByDeletingLastPathComponent();
         var resourcesPath = contentsPath.stringByAppendingPathComponent("Resources");
@@ -28,7 +28,7 @@ function onStartup(context) {
 /**
  * Handles shutdown action.
  */
-function onShutdown(context) {
+export function onShutdown(context) {
     if (isFrameworkLoaded()) {
         log("SymbolNameAutocompletePluginController Disabled");
         SymbolNameAutocompletePluginController.sharedController().enabled = false;
@@ -38,7 +38,7 @@ function onShutdown(context) {
 /**
  * Handles CreateSymbol.finish action.
  */
-function onCreateSymbolDidAppearHandler(context) {
+export function onCreateSymbolDidAppearHandler(context) {
     if (isFrameworkLoaded()) {
         const doc = context.actionContext.document;
         const docData = doc.documentData();
@@ -61,7 +61,7 @@ function isFrameworkLoaded() {
 /**
  * Handles about menu item.
  */
-function onSelectAboutMenuItem(context) {
+export function onSelectAboutMenuItem(context) {
     var repositoryUrl = NSURL.URLWithString(REPOSITORY_URL_STRING);
 
     NSWorkspace.sharedWorkspace().openURL(repositoryUrl);

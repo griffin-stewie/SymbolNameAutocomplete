@@ -5,6 +5,9 @@
     <description>Autocomplete symbol name when create it.</description>
     <language>en</language>
     <item>
+      <enclosure url="https://github.com/griffin-stewie/SymbolNameAutocomplete/releases/download/v0.6.1/SymbolNameAutocomplete.sketchplugin.zip" sparkle:version="0.6.1"/>
+    </item>
+    <item>
       <enclosure url="https://github.com/griffin-stewie/SymbolNameAutocomplete/releases/download/v0.6.0/SymbolNameAutocomplete.sketchplugin.zip" sparkle:version="0.6.0"/>
     </item>
     <item>
